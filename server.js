@@ -12,8 +12,8 @@ app.use(express.json());
 
 // Rate limiting simple (en mémoire)
 const rateLimits = new Map();
-const RATE_LIMIT = 20; // 20 requêtes max
-const RATE_WINDOW = 3600000; // par heure (1h en ms)
+const RATE_LIMIT = 20;
+const RATE_WINDOW = 3600000;
 
 // Initialize Anthropic client
 const anthropic = new Anthropic({
@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 // Route de génération
 app.post('/api/generate', async (req, res) => {
   try {
-    const { prompt } = req.body;
+    const { prompt, language } = req.body;
     const clientIp = req.ip;
 
     // Vérifier le rate limit
@@ -49,12 +49,21 @@ app.post('/api/generate', async (req, res) => {
     userLimits.count++;
     rateLimits.set(clientIp, userLimits);
 
+    // Instructions de langue pour Claude
+    const languageInstructions = {
+      fr: "Réponds en français.",
+      pt: "Responde em português.",
+      de: "Antworte auf Deutsch."
+    };
+
+    const fullPrompt = `${languageInstructions[language] || languageInstructions.fr} ${prompt}`;
+
     // Appel à l'API Anthropic
     const message = await anthropic.messages.create({
       model: 'claude-sonnet-4-20250514',
       max_tokens: 1000,
       messages: [
-        { role: 'user', content: prompt }
+        { role: 'user', content: fullPrompt }
       ],
     });
 
