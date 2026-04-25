@@ -20,9 +20,8 @@ const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
-// Route de test
 app.get('/', (req, res) => {
-  res.json({ message: 'Backend Inspiration App fonctionne !' });
+  res.sendFile(__dirname + '/index.html');
 });
 
 // Route de génération
