@@ -10,8 +10,8 @@
       --navy:      #0d1f3c;
       --navy-mid:  #162d52;
       --navy-light:#1e3d6e;
-      --green:     #2ecc8b;
-      --green-dark:#22a870;
+      --green:     #4d9e80;
+      --green-dark:#3a7d64;
       --muted:     #8a9bb5;
       --text:      #dce6f4;
       --white:     #ffffff;
@@ -40,7 +40,7 @@
     #hero .eyebrow { font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: 1.25rem; }
     #hero h1 { margin-bottom: 1.5rem; }
     #hero .sub { font-size: 1.15rem; color: var(--muted); max-width: 580px; margin-bottom: 2.5rem; }
-    .btn-primary { display: inline-block; background: var(--green); color: var(--navy); font-weight: 700; font-size: 1rem; padding: .85rem 2rem; border-radius: var(--radius); text-decoration: none; transition: background .2s, transform .15s; }
+    .btn-primary { display: inline-block; background: var(--green); color: var(--white); font-weight: 700; font-size: 1rem; padding: .85rem 2rem; border-radius: var(--radius); text-decoration: none; transition: background .2s, transform .15s; }
     .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
     .hero-note { margin-top: 1.25rem; font-size: .85rem; color: var(--muted); }
     #problem { background: var(--navy-mid); }
@@ -57,11 +57,8 @@
     .item-dot { flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--green); margin-top: .55rem; }
     .item-text h3 { font-size: 1rem; margin-bottom: .2rem; color: var(--white); }
     .item-text p { font-size: .9rem; color: var(--muted); margin: 0; }
-    #proof { background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy-mid) 100%); text-align: center; }
-    .stat-box { display: inline-block; margin: 2rem 0 1.5rem; padding: 2.5rem 3.5rem; background: rgba(255,255,255,.04); border: 1px solid rgba(46,204,139,.3); border-radius: 8px; }
-    .stat-number { font-size: clamp(3rem, 8vw, 5rem); font-weight: 800; color: var(--green); line-height: 1; display: block; }
-    .stat-label { display: block; font-size: .9rem; color: var(--muted); margin-top: .5rem; letter-spacing: .04em; }
-    #proof .context { max-width: 540px; margin: 0 auto; font-size: .95rem; color: var(--muted); }
+    #proof { background: var(--navy-mid); }
+    .proof-quote { max-width: 600px; margin-top: 1.5rem; background: rgba(255,255,255,.04); border-left: 3px solid var(--green); padding: 1.5rem 1.75rem; border-radius: 0 var(--radius) var(--radius) 0; font-size: 1.05rem; color: var(--text); }
     #audience { background: var(--navy); }
     #audience .profiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
     .profile { background: var(--navy-mid); border: 1px solid rgba(255,255,255,.07); border-radius: var(--radius); padding: 1.5rem; }
@@ -78,7 +75,7 @@
     input:focus, textarea:focus, select:focus { outline: none; border-color: var(--green); }
     select { appearance: none; cursor: pointer; }
     textarea { resize: vertical; min-height: 90px; }
-    .btn-submit { width: 100%; background: var(--green); color: var(--navy); font-weight: 700; font-size: 1rem; padding: .9rem; border: none; border-radius: var(--radius); cursor: pointer; transition: background .2s, transform .15s; }
+    .btn-submit { width: 100%; background: var(--green); color: var(--white); font-weight: 700; font-size: 1rem; padding: .9rem; border: none; border-radius: var(--radius); cursor: pointer; transition: background .2s, transform .15s; }
     .btn-submit:hover { background: var(--green-dark); transform: translateY(-1px); }
     .form-note { margin-top: 1rem; font-size: .8rem; color: var(--muted); text-align: center; }
     footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,.06); padding: 2rem 0; text-align: center; font-size: .82rem; color: var(--muted); }
@@ -87,7 +84,6 @@
     @media (max-width: 600px) {
       section { padding: 3.5rem 0; }
       #hero { padding: 4rem 0 3.5rem; }
-      .stat-box { padding: 2rem; }
       .contact-box { padding: 1.75rem 1.25rem; }
     }
   </style>
@@ -101,7 +97,7 @@
 </nav>
 <section id="hero">
   <div class="container">
-    <p class="eyebrow">Copywriter &amp; stratège emailing B2B</p>
+    <p class="eyebrow">Copywriter email B2B</p>
     <h1>Votre base de données dort.<br>Elle pourrait vous rapporter.</h1>
     <p class="sub">Vous avez des milliers de contacts. Pas le temps, ni les outils pour en faire quelque chose. Je transforme cette base dormante en canal de revenus régulier — sans budget publicitaire.</p>
     <a href="#cta" class="btn-primary">Discutons de votre base</a>
@@ -127,9 +123,9 @@
     <div class="divider"></div>
     <h2>Un système d'emailing qui délivre<br>et qui convertit.</h2>
     <div class="promise-block">
-      <p>Je prends en charge l'intégralité de la chaîne : configuration DNS, délivrabilité, préchauffage de l'expéditeur, nettoyage et segmentation de votre base, rédaction des séquences — puis je mesure et j'ajuste.</p>
-      <p>Vous n'avez pas à gérer la technique. Vous n'avez pas à écrire une ligne. Vous recevez des rapports clairs et des leads qui progressent dans votre tunnel.</p>
-      <p style="margin-bottom:0"><strong>Ce qui me distingue :</strong> je suis l'un des rares copywriters à maîtriser aussi la partie technique de bout en bout. Pas de sous-traitance, pas de déperdition entre les maillons de la chaîne.</p>
+      <p>J'écris les séquences emails qui font agir. Je m'occupe aussi de tout ce que la plupart des copywriters sous-traitent ou ignorent : délivrabilité, configuration technique, nettoyage et segmentation de votre base.</p>
+      <p>Vous ne gérez rien. Vous ne rédigez rien. Vous recevez des leads qui progressent dans votre tunnel.</p>
+      <p style="margin-bottom:0"><strong>La différence :</strong> maîtriser les deux côtés évite la déperdition entre copywriting et technique — un problème courant quand les deux sont séparés.</p>
     </div>
   </div>
 </section>
@@ -137,27 +133,26 @@
   <div class="container">
     <span class="label">Ce qui est inclus</span>
     <div class="divider"></div>
-    <h2>Technique &amp; copywriting.<br>Tout est géré.</h2>
+    <h2>Copywriting &amp; technique.<br>Tout est géré.</h2>
     <div class="grid">
-      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Configuration DNS &amp; délivrabilité</h3><p>SPF, DKIM, DMARC, réputation de domaine — vos emails arrivent en boîte de réception, pas en spam.</p></div></div>
-      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Préchauffage de l'expéditeur</h3><p>Montée en volume progressive pour établir une réputation solide avant les campagnes à grande échelle.</p></div></div>
-      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Nettoyage de base de données</h3><p>Suppression des adresses invalides, doublons, inactifs — pour préserver votre réputation et améliorer les métriques.</p></div></div>
-      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Segmentation &amp; ciblage</h3><p>Découpage de votre base en segments homogènes pour envoyer le bon message à la bonne personne.</p></div></div>
       <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Copywriting des séquences</h3><p>Rédaction des emails adaptée à votre secteur, votre offre et votre audience. Ton direct, sans remplissage.</p></div></div>
+      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Segmentation &amp; ciblage</h3><p>Découpage de votre base en segments homogènes pour envoyer le bon message à la bonne personne.</p></div></div>
       <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Suivi &amp; optimisation</h3><p>Analyse des taux d'ouverture, de clic et de conversion. Ajustements continus sur la base des résultats réels.</p></div></div>
+      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Nettoyage de base de données</h3><p>Suppression des adresses invalides, doublons, inactifs — pour préserver votre réputation expéditeur.</p></div></div>
+      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Délivrabilité &amp; configuration</h3><p>SPF, DKIM, DMARC, réputation de domaine — vos emails arrivent en boîte de réception, pas en spam.</p></div></div>
+      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Préchauffage de l'expéditeur</h3><p>Montée en volume progressive pour établir une réputation solide avant les campagnes à grande échelle.</p></div></div>
     </div>
   </div>
 </section>
 <section id="proof">
   <div class="container">
-    <span class="label">La preuve</span>
-    <div class="divider" style="margin-left:auto;margin-right:auto"></div>
-    <h2>Des chiffres, pas des promesses.</h2>
-    <div class="stat-box">
-      <span class="stat-number">50 000 €</span>
-      <span class="stat-label">de chiffre d'affaires généré en 6 mois</span>
+    <span class="label">Résultat concret</span>
+    <div class="divider"></div>
+    <h2>Un exemple, pas une promesse.</h2>
+    <div class="proof-quote">
+      <p>Sur une base de <strong>20 000 contacts requalifiés</strong> dans le rachat de crédit, une séquence de 6 mois a généré <strong>50 000 € de CA</strong> — sans budget publicitaire, sans nouveaux contacts.</p>
+      <p style="margin:0;color:var(--muted);font-size:.9rem">Base existante, correctement nettoyée, segmentée et activée.</p>
     </div>
-    <p class="context">En 2023, sur une base de <strong>20 000 contacts requalifiés</strong> dans le rachat de crédit, une campagne emailing de 6 mois a produit 50 000 euros de CA pour le client.<br><br>Sans budget publicitaire. Sans acquisition de nouveaux contacts. Uniquement à partir d'une base existante, correctement nettoyée, segmentée et activée.</p>
   </div>
 </section>
 <section id="audience">
@@ -193,7 +188,7 @@
 </section>
 <footer>
   <div class="container">
-    <p>© 2024 José Peixoto · Copywriter &amp; stratège emailing B2B</p>
+    <p>© 2025 José Peixoto · Copywriter email B2B</p>
     <p style="margin-top:.4rem"><a href="mailto:contact@josepeixoto.fr">contact@josepeixoto.fr</a></p>
   </div>
 </footer>
