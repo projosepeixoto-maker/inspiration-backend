@@ -3,194 +3,224 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>José Peixoto — Emailing B2B clé en main pour PME</title>
+  <title>José Peixoto — Copywriter email B2B</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --navy:      #0d1f3c;
-      --navy-mid:  #162d52;
-      --navy-light:#1e3d6e;
-      --green:     #4d9e80;
-      --green-dark:#3a7d64;
-      --muted:     #8a9bb5;
-      --text:      #dce6f4;
+      --bg:        #f2f4f7;
+      --bg-alt:    #ffffff;
+      --navy:      #1c2b3a;
+      --text:      #3c4d5e;
+      --muted:     #7a8fa8;
+      --accent:    #3a7a64;
+      --accent-bg: #edf3f0;
+      --border:    #dde3ea;
       --white:     #ffffff;
-      --radius:    6px;
-      --max:       780px;
+      --radius:    8px;
+      --max:       760px;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--navy); color: var(--text); line-height: 1.7; font-size: 1rem; }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; font-size: 1rem; }
     .container { max-width: var(--max); margin: 0 auto; padding: 0 1.5rem; }
     section { padding: 5rem 0; }
-    h1, h2, h3 { font-weight: 700; line-height: 1.25; color: var(--white); }
-    h1 { font-size: clamp(2rem, 5vw, 3rem); }
-    h2 { font-size: clamp(1.5rem, 3.5vw, 2.1rem); margin-bottom: 1.2rem; }
-    h3 { font-size: 1.1rem; margin-bottom: .4rem; color: var(--green); }
-    p { margin-bottom: 1rem; }
-    strong { color: var(--white); }
-    .label { display: inline-block; font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--green); margin-bottom: .75rem; }
-    .divider { width: 48px; height: 3px; background: var(--green); border-radius: 2px; margin-bottom: 1.5rem; }
-    nav { position: sticky; top: 0; z-index: 100; background: rgba(13,31,60,.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,.06); padding: .9rem 0; }
+    h1, h2, h3 { font-weight: 700; line-height: 1.25; color: var(--navy); }
+    h1 { font-size: clamp(1.9rem, 5vw, 2.8rem); }
+    h2 { font-size: clamp(1.4rem, 3.5vw, 2rem); margin-bottom: 1rem; }
+    h3 { font-size: 1rem; margin-bottom: .3rem; color: var(--navy); }
+    p { margin-bottom: 1rem; color: var(--text); }
+    strong { color: var(--navy); font-weight: 600; }
+    .label { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: .6rem; }
+    .divider { width: 36px; height: 2px; background: var(--accent); border-radius: 2px; margin-bottom: 1.5rem; }
+
+    /* Nav */
+    nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem 0; }
     nav .container { display: flex; align-items: center; justify-content: space-between; }
-    .nav-brand { font-size: 1rem; font-weight: 700; color: var(--white); text-decoration: none; letter-spacing: .02em; }
-    .nav-brand span { color: var(--green); }
-    .nav-cta { font-size: .85rem; font-weight: 600; color: var(--green); text-decoration: none; border: 1.5px solid var(--green); padding: .45rem 1rem; border-radius: var(--radius); transition: background .2s, color .2s; white-space: nowrap; }
-    .nav-cta:hover { background: var(--green); color: var(--navy); }
-    #hero { padding: 6rem 0 5rem; background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 100%); border-bottom: 1px solid rgba(255,255,255,.06); }
-    #hero .eyebrow { font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: 1.25rem; }
-    #hero h1 { margin-bottom: 1.5rem; }
-    #hero .sub { font-size: 1.15rem; color: var(--muted); max-width: 580px; margin-bottom: 2.5rem; }
-    .btn-primary { display: inline-block; background: var(--green); color: var(--white); font-weight: 700; font-size: 1rem; padding: .85rem 2rem; border-radius: var(--radius); text-decoration: none; transition: background .2s, transform .15s; }
-    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
-    .hero-note { margin-top: 1.25rem; font-size: .85rem; color: var(--muted); }
-    #problem { background: var(--navy-mid); }
-    #problem .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
-    .card { background: var(--navy); border: 1px solid rgba(255,255,255,.07); border-radius: var(--radius); padding: 1.5rem; }
-    .card-icon { font-size: 1.4rem; margin-bottom: .75rem; }
-    .card p { font-size: .95rem; color: var(--muted); margin: 0; }
-    #promise { background: var(--navy); }
-    #promise .promise-block { background: var(--navy-mid); border-left: 4px solid var(--green); border-radius: 0 var(--radius) var(--radius) 0; padding: 2rem 2rem 2rem 1.75rem; margin-top: 1.5rem; }
-    #promise .promise-block p:last-child { margin-bottom: 0; }
-    #included { background: var(--navy-mid); }
-    #included .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
-    .item { display: flex; gap: 1rem; align-items: flex-start; }
-    .item-dot { flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--green); margin-top: .55rem; }
-    .item-text h3 { font-size: 1rem; margin-bottom: .2rem; color: var(--white); }
-    .item-text p { font-size: .9rem; color: var(--muted); margin: 0; }
-    #proof { background: var(--navy-mid); }
-    .proof-quote { max-width: 600px; margin-top: 1.5rem; background: rgba(255,255,255,.04); border-left: 3px solid var(--green); padding: 1.5rem 1.75rem; border-radius: 0 var(--radius) var(--radius) 0; font-size: 1.05rem; color: var(--text); }
-    #audience { background: var(--navy); }
-    #audience .profiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
-    .profile { background: var(--navy-mid); border: 1px solid rgba(255,255,255,.07); border-radius: var(--radius); padding: 1.5rem; }
-    .profile h3 { color: var(--white); font-size: 1rem; margin-bottom: .5rem; }
-    .profile p { font-size: .88rem; color: var(--muted); margin: 0; }
-    #cta { background: var(--navy-mid); text-align: center; border-top: 1px solid rgba(255,255,255,.06); }
-    #cta h2 { margin-bottom: 1rem; }
-    #cta .sub { color: var(--muted); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
-    .contact-box { max-width: 480px; margin: 0 auto; background: var(--navy); border: 1px solid rgba(255,255,255,.08); border-radius: 8px; padding: 2.5rem; }
-    .form-group { margin-bottom: 1.1rem; text-align: left; }
-    label { display: block; font-size: .8rem; font-weight: 600; color: var(--muted); margin-bottom: .4rem; text-transform: uppercase; letter-spacing: .06em; }
-    input, textarea, select { width: 100%; background: var(--navy-mid); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius); padding: .7rem 1rem; color: var(--white); font-size: .95rem; font-family: inherit; transition: border-color .2s; }
+    .nav-brand { font-size: .95rem; font-weight: 700; color: var(--navy); text-decoration: none; }
+    .nav-brand span { color: var(--accent); }
+    .nav-cta { font-size: .85rem; font-weight: 600; color: var(--accent); text-decoration: none; border: 1.5px solid var(--accent); padding: .4rem .95rem; border-radius: var(--radius); transition: background .2s, color .2s; white-space: nowrap; }
+    .nav-cta:hover { background: var(--accent); color: var(--white); }
+
+    /* Hero */
+    #hero { background: var(--white); padding: 6rem 0 5rem; border-bottom: 1px solid var(--border); }
+    #hero .eyebrow { font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+    #hero h1 { margin-bottom: 1.4rem; }
+    #hero .sub { font-size: 1.1rem; color: var(--muted); max-width: 540px; margin-bottom: 2.2rem; line-height: 1.7; }
+    .btn-primary { display: inline-block; background: var(--accent); color: var(--white); font-weight: 600; font-size: .95rem; padding: .8rem 1.8rem; border-radius: var(--radius); text-decoration: none; transition: background .2s, transform .15s; }
+    .btn-primary:hover { background: #2e6350; transform: translateY(-1px); }
+    .hero-note { margin-top: 1rem; font-size: .82rem; color: var(--muted); }
+
+    /* Problem */
+    #problem { background: var(--bg); }
+    #problem .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-top: 1.75rem; }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; }
+    .card-icon { font-size: 1.3rem; margin-bottom: .6rem; }
+    .card h3 { margin-bottom: .4rem; font-size: .95rem; }
+    .card p { font-size: .88rem; color: var(--muted); margin: 0; }
+
+    /* Promise */
+    #promise { background: var(--white); }
+    .promise-block { background: var(--accent-bg); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 1.75rem 1.75rem 1.75rem 1.5rem; margin-top: 1.5rem; }
+    .promise-block p:last-child { margin-bottom: 0; }
+
+    /* Included */
+    #included { background: var(--bg); }
+    #included .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1rem; margin-top: 1.75rem; }
+    .item { display: flex; gap: .9rem; align-items: flex-start; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+    .item-dot { flex-shrink: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-top: .45rem; }
+    .item-text h3 { font-size: .95rem; margin-bottom: .2rem; }
+    .item-text p { font-size: .85rem; color: var(--muted); margin: 0; }
+
+    /* Proof */
+    #proof { background: var(--white); }
+    .proof-quote { max-width: 580px; margin-top: 1.5rem; background: var(--accent-bg); border-left: 3px solid var(--accent); padding: 1.5rem 1.75rem; border-radius: 0 var(--radius) var(--radius) 0; }
+    .proof-quote p { color: var(--text); margin-bottom: .5rem; font-size: 1rem; }
+    .proof-quote .proof-note { font-size: .85rem; color: var(--muted); margin: 0; }
+
+    /* Audience */
+    #audience { background: var(--bg); }
+    #audience .profiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.75rem; }
+    .profile { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; }
+    .profile h3 { font-size: .95rem; margin-bottom: .4rem; }
+    .profile p { font-size: .85rem; color: var(--muted); margin: 0; }
+
+    /* CTA */
+    #cta { background: var(--white); border-top: 1px solid var(--border); }
+    #cta .container { max-width: 560px; }
+    #cta h2 { margin-bottom: .9rem; }
+    #cta .sub { color: var(--muted); margin-bottom: 2rem; }
+    .form-group { margin-bottom: 1rem; }
+    label { display: block; font-size: .75rem; font-weight: 600; color: var(--muted); margin-bottom: .35rem; text-transform: uppercase; letter-spacing: .06em; }
+    input, textarea, select { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: .65rem .9rem; color: var(--navy); font-size: .95rem; font-family: inherit; transition: border-color .2s; }
     input::placeholder, textarea::placeholder { color: var(--muted); }
-    input:focus, textarea:focus, select:focus { outline: none; border-color: var(--green); }
+    input:focus, textarea:focus, select:focus { outline: none; border-color: var(--accent); background: var(--white); }
     select { appearance: none; cursor: pointer; }
     textarea { resize: vertical; min-height: 90px; }
-    .btn-submit { width: 100%; background: var(--green); color: var(--white); font-weight: 700; font-size: 1rem; padding: .9rem; border: none; border-radius: var(--radius); cursor: pointer; transition: background .2s, transform .15s; }
-    .btn-submit:hover { background: var(--green-dark); transform: translateY(-1px); }
-    .form-note { margin-top: 1rem; font-size: .8rem; color: var(--muted); text-align: center; }
-    footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,.06); padding: 2rem 0; text-align: center; font-size: .82rem; color: var(--muted); }
+    .btn-submit { width: 100%; background: var(--accent); color: var(--white); font-weight: 600; font-size: .95rem; padding: .85rem; border: none; border-radius: var(--radius); cursor: pointer; transition: background .2s; }
+    .btn-submit:hover { background: #2e6350; }
+    .form-note { margin-top: .9rem; font-size: .8rem; color: var(--muted); text-align: center; }
+
+    /* Footer */
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 2rem 0; text-align: center; font-size: .82rem; color: var(--muted); }
     footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--green); }
+    footer a:hover { color: var(--accent); }
+
     @media (max-width: 600px) {
       section { padding: 3.5rem 0; }
-      #hero { padding: 4rem 0 3.5rem; }
-      .contact-box { padding: 1.75rem 1.25rem; }
+      #hero { padding: 4rem 0 3rem; }
     }
   </style>
 </head>
 <body>
+
 <nav>
   <div class="container">
     <a href="#hero" class="nav-brand">José <span>Peixoto</span></a>
     <a href="#cta" class="nav-cta">Prendre contact</a>
   </div>
 </nav>
+
 <section id="hero">
   <div class="container">
     <p class="eyebrow">Copywriter email B2B</p>
     <h1>Votre base de données dort.<br>Elle pourrait vous rapporter.</h1>
-    <p class="sub">Vous avez des milliers de contacts. Pas le temps, ni les outils pour en faire quelque chose. Je transforme cette base dormante en canal de revenus régulier — sans budget publicitaire.</p>
-    <a href="#cta" class="btn-primary">Discutons de votre base</a>
-    <p class="hero-note">Réponse sous 48 h · Aucun engagement</p>
+    <p class="sub">Vous avez des contacts accumulés au fil du temps — prospects, anciens clients, leads non transformés. Je les remets au travail, sans budget publicitaire.</p>
+    <a href="#cta" class="btn-primary">Discutons de votre situation</a>
+    <p class="hero-note">Réponse sous 48 h &middot; Aucun engagement</p>
   </div>
 </section>
+
 <section id="problem">
   <div class="container">
-    <span class="label">Le problème</span>
+    <span class="label">Le constat</span>
     <div class="divider"></div>
-    <h2>Une base de données n'a de valeur<br>que si elle est activée.</h2>
-    <p style="color:var(--muted);max-width:600px">La plupart des PME accumulent des contacts pendant des années — prospects, anciens clients, leads non transformés. Résultat : une ressource qui coûte à stocker et ne produit rien.</p>
+    <h2>Une base inactive ne rapporte rien.<br>Mais elle peut changer de statut.</h2>
+    <p style="color:var(--muted);max-width:580px">La plupart des entreprises laissent des années de contacts sans suite. Ce n'est pas un manque de volonté, c'est souvent un manque de méthode — ou de temps.</p>
     <div class="cards">
-      <div class="card"><div class="card-icon">📭</div><h3>Emails qui n'arrivent pas</h3><p>Mauvaise configuration technique, réputation expéditeur dégradée, filtres anti-spam — vos messages finissent en indésirables.</p></div>
-      <div class="card"><div class="card-icon">📊</div><h3>Données jamais exploitées</h3><p>Des milliers de contacts inactifs depuis des mois. Aucune segmentation, aucune relance. Un levier de croissance ignoré.</p></div>
-      <div class="card"><div class="card-icon">✍️</div><h3>Messages qui ne convertissent pas</h3><p>Le bon envoi technique ne suffit pas. Sans copywriting adapté au secteur, le taux de conversion reste à zéro.</p></div>
+      <div class="card"><div class="card-icon">📭</div><h3>Emails qui n'arrivent pas</h3><p>Configuration technique insuffisante, réputation expéditeur fragilisée — les messages finissent en spam avant d'être lus.</p></div>
+      <div class="card"><div class="card-icon">📊</div><h3>Base jamais exploitée</h3><p>Des milliers de contacts sans relance ni segmentation. Un potentiel réel, laissé de côté faute de process.</p></div>
+      <div class="card"><div class="card-icon">✍️</div><h3>Messages trop génériques</h3><p>Un email bien acheminé ne suffit pas. Sans angle adapté à votre audience, le taux de conversion reste proche de zéro.</p></div>
     </div>
   </div>
 </section>
+
 <section id="promise">
   <div class="container">
-    <span class="label">La promesse</span>
+    <span class="label">Ce que je fais</span>
     <div class="divider"></div>
-    <h2>Un système d'emailing qui délivre<br>et qui convertit.</h2>
+    <h2>Du copywriting qui convertit,<br>appuyé sur une base technique solide.</h2>
     <div class="promise-block">
-      <p>J'écris les séquences emails qui font agir. Je m'occupe aussi de tout ce que la plupart des copywriters sous-traitent ou ignorent : délivrabilité, configuration technique, nettoyage et segmentation de votre base.</p>
-      <p>Vous ne gérez rien. Vous ne rédigez rien. Vous recevez des leads qui progressent dans votre tunnel.</p>
-      <p style="margin-bottom:0"><strong>La différence :</strong> maîtriser les deux côtés évite la déperdition entre copywriting et technique — un problème courant quand les deux sont séparés.</p>
+      <p>J'écris les séquences emails adaptées à votre secteur et votre audience. Je prends également en charge la partie technique — délivrabilité, configuration, nettoyage et segmentation de la base — que la plupart des copywriters délèguent ou ne maîtrisent pas.</p>
+      <p>Vous n'avez pas à coordonner plusieurs prestataires ni à gérer la technique. Vous suivez les résultats.</p>
+      <p style="margin-bottom:0"><strong>L'avantage :</strong> quand le message et la technique sont pensés ensemble, on évite les pertes qui surviennent quand ils sont traités séparément.</p>
     </div>
   </div>
 </section>
+
 <section id="included">
   <div class="container">
     <span class="label">Ce qui est inclus</span>
     <div class="divider"></div>
-    <h2>Copywriting &amp; technique.<br>Tout est géré.</h2>
+    <h2>Copywriting &amp; technique.<br>Tout est couvert.</h2>
     <div class="grid">
-      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Copywriting des séquences</h3><p>Rédaction des emails adaptée à votre secteur, votre offre et votre audience. Ton direct, sans remplissage.</p></div></div>
-      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Segmentation &amp; ciblage</h3><p>Découpage de votre base en segments homogènes pour envoyer le bon message à la bonne personne.</p></div></div>
-      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Suivi &amp; optimisation</h3><p>Analyse des taux d'ouverture, de clic et de conversion. Ajustements continus sur la base des résultats réels.</p></div></div>
-      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Nettoyage de base de données</h3><p>Suppression des adresses invalides, doublons, inactifs — pour préserver votre réputation expéditeur.</p></div></div>
-      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Délivrabilité &amp; configuration</h3><p>SPF, DKIM, DMARC, réputation de domaine — vos emails arrivent en boîte de réception, pas en spam.</p></div></div>
-      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Préchauffage de l'expéditeur</h3><p>Montée en volume progressive pour établir une réputation solide avant les campagnes à grande échelle.</p></div></div>
+      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Copywriting des séquences</h3><p>Rédaction adaptée à votre offre et votre audience. Ton direct, sans remplissage.</p></div></div>
+      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Segmentation &amp; ciblage</h3><p>Découpage de la base pour envoyer le bon message à la bonne personne.</p></div></div>
+      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Suivi &amp; ajustements</h3><p>Analyse des résultats et optimisations au fil des envois.</p></div></div>
+      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Nettoyage de base</h3><p>Suppression des adresses invalides et inactives pour préserver la réputation expéditeur.</p></div></div>
+      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Délivrabilité &amp; configuration</h3><p>SPF, DKIM, DMARC — les emails arrivent en boîte de réception.</p></div></div>
+      <div class="item"><div class="item-dot"></div><div class="item-text"><h3>Préchauffage expéditeur</h3><p>Montée en volume progressive pour établir une réputation solide avant les campagnes.</p></div></div>
     </div>
   </div>
 </section>
+
 <section id="proof">
   <div class="container">
     <span class="label">Résultat concret</span>
     <div class="divider"></div>
     <h2>Un exemple, pas une promesse.</h2>
     <div class="proof-quote">
-      <p>Sur une base de <strong>20 000 contacts requalifiés</strong> dans le rachat de crédit, une séquence de 6 mois a généré <strong>50 000 € de CA</strong> — sans budget publicitaire, sans nouveaux contacts.</p>
-      <p style="margin:0;color:var(--muted);font-size:.9rem">Base existante, correctement nettoyée, segmentée et activée.</p>
+      <p>Sur une base de <strong>20 000 contacts requalifiés</strong> dans le rachat de crédit, une séquence de 6 mois a généré <strong>50 000 € de CA</strong> pour le client — sans budget publicitaire, sans nouveaux contacts.</p>
+      <p class="proof-note">Base existante, nettoyée, segmentée et activée.</p>
     </div>
   </div>
 </section>
+
 <section id="audience">
   <div class="container">
     <span class="label">À qui c'est destiné</span>
     <div class="divider"></div>
-    <h2>Vous avez une base de données.<br>Vous ne savez pas quoi en faire.</h2>
-    <p style="color:var(--muted);max-width:580px;margin-bottom:0">Cette prestation s'adresse aux dirigeants de PME qui ont accumulé des contacts au fil du temps et veulent en faire un canal de revenus prévisible.</p>
+    <h2>Vous avez des données.<br>Elles méritent d'être exploitées.</h2>
+    <p style="color:var(--muted);max-width:560px;margin-bottom:1.5rem">Cette prestation s'adresse aux dirigeants de PME qui ont une base de contacts dormante et souhaitent en faire un canal de revenus régulier.</p>
     <div class="profiles">
-      <div class="profile"><h3>Courtiers en crédit immobilier</h3><p>Des centaines de dossiers traités, des prospects non transformés. Votre base est un actif sous-exploité.</p></div>
-      <div class="profile"><h3>Courtiers en assurance</h3><p>Clients en attente de renouvellement, prospects non closés. L'emailing bien configuré les fait revenir.</p></div>
-      <div class="profile"><h3>PME avec une base dormante</h3><p>Vous avez des données mais pas de stratégie pour les activer. C'est exactement ce que je règle.</p></div>
+      <div class="profile"><h3>Courtiers en crédit immobilier</h3><p>Des dossiers traités, des prospects non transformés. La base est là, elle attend d'être activée.</p></div>
+      <div class="profile"><h3>Courtiers en assurance</h3><p>Clients en renouvellement, prospects non clos — un bon suivi email peut changer la donne.</p></div>
+      <div class="profile"><h3>PME avec une base dormante</h3><p>Vous avez des contacts mais pas de process pour les relancer. C'est précisément là que j'interviens.</p></div>
     </div>
   </div>
 </section>
+
 <section id="cta">
   <div class="container">
     <span class="label">Contact</span>
-    <div class="divider" style="margin-left:auto;margin-right:auto"></div>
-    <h2>Parlez-moi de votre base de données.</h2>
-    <p class="sub">Décrivez votre situation en quelques lignes. Je vous reviens sous 48 h avec un premier diagnostic honnête.</p>
-    <div class="contact-box">
-      <form action="mailto:contact@josepeixoto.fr" method="post" enctype="text/plain">
-        <div class="form-group"><label for="name">Votre nom</label><input type="text" id="name" name="name" placeholder="Jean Dupont" required /></div>
-        <div class="form-group"><label for="email">Email professionnel</label><input type="email" id="email" name="email" placeholder="jean@entreprise.fr" required /></div>
-        <div class="form-group"><label for="sector">Votre secteur</label><select id="sector" name="sector"><option value="" disabled selected>Sélectionnez…</option><option>Courtage crédit immobilier</option><option>Courtage assurance</option><option>PME — autre secteur</option></select></div>
-        <div class="form-group"><label for="message">Votre base de données &amp; votre objectif</label><textarea id="message" name="message" placeholder="Ex : base de 8 000 contacts inactifs depuis 2 ans, objectif relancer des prospects rachat de crédit…"></textarea></div>
-        <button type="submit" class="btn-submit">Envoyer ma demande</button>
-        <p class="form-note">Aucun engagement. Réponse sous 48 h.</p>
-      </form>
-    </div>
+    <div class="divider"></div>
+    <h2>Parlez-moi de votre base.</h2>
+    <p class="sub">Décrivez votre situation en quelques lignes. Je vous reviens sous 48 h avec un retour honnête.</p>
+    <form action="mailto:contact@josepeixoto.fr" method="post" enctype="text/plain">
+      <div class="form-group"><label for="name">Nom</label><input type="text" id="name" name="name" placeholder="Jean Dupont" required /></div>
+      <div class="form-group"><label for="email">Email professionnel</label><input type="email" id="email" name="email" placeholder="jean@entreprise.fr" required /></div>
+      <div class="form-group"><label for="sector">Secteur</label><select id="sector" name="sector"><option value="" disabled selected>Sélectionnez…</option><option>Courtage crédit immobilier</option><option>Courtage assurance</option><option>PME — autre secteur</option></select></div>
+      <div class="form-group"><label for="message">Votre base &amp; votre objectif</label><textarea id="message" name="message" placeholder="Ex : base de 8 000 contacts inactifs, objectif relancer des prospects rachat de crédit…"></textarea></div>
+      <button type="submit" class="btn-submit">Envoyer</button>
+      <p class="form-note">Aucun engagement · Réponse sous 48 h</p>
+    </form>
   </div>
 </section>
+
 <footer>
   <div class="container">
-    <p>© 2025 José Peixoto · Copywriter email B2B</p>
+    <p>&copy; 2025 José Peixoto &middot; Copywriter email B2B</p>
     <p style="margin-top:.4rem"><a href="mailto:contact@josepeixoto.fr">contact@josepeixoto.fr</a></p>
   </div>
 </footer>
+
 </body>
 </html>
