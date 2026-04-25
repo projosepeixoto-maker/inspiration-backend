@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>José Peixoto — Système emailing clé en main</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:        #f2f4f7;
+      --bg-alt:    #ffffff;
+      --navy:      #1c2b3a;
+      --text:      #3c4d5e;
+      --muted:     #7a8fa8;
+      --accent:    #3a7a64;
+      --accent-bg: #edf3f0;
+      --border:    #dde3ea;
+      --white:     #ffffff;
+      --radius:    8px;
+      --max:       760px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; font-size: 1rem; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 5rem 0; }
+    h1, h2, h3 { font-weight: 700; line-height: 1.25; color: var(--navy); }
+    h1 { font-size: clamp(1.9rem, 5vw, 2.8rem); }
+    h2 { font-size: clamp(1.4rem, 3.5vw, 2rem); margin-bottom: 1rem; }
+    h3 { font-size: 1rem; margin-bottom: .3rem; }
+    p { margin-bottom: 1rem; color: var(--text); }
+    strong { color: var(--navy); font-weight: 600; }
+    .label { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: .6rem; }
+    .divider { width: 36px; height: 2px; background: var(--accent); border-radius: 2px; margin-bottom: 1.5rem; }
+    nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem 0; }
+    nav .container { display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { font-size: .95rem; font-weight: 700; color: var(--navy); text-decoration: none; }
+    .nav-brand span { color: var(--accent); }
+    .nav-cta { font-size: .85rem; font-weight: 600; color: var(--accent); text-decoration: none; border: 1.5px solid var(--accent); padding: .4rem .95rem; border-radius: var(--radius); transition: background .2s, color .2s; white-space: nowrap; }
+    .nav-cta:hover { background: var(--accent); color: var(--white); }
+    #hero { background: var(--white); padding: 6rem 0 5rem; border-bottom: 1px solid var(--border); }
+    #hero .eyebrow { font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+    #hero h1 { margin-bottom: 1.4rem; }
+    #hero .sub { font-size: 1.1rem; color: var(--muted); max-width: 560px; margin-bottom: 2.2rem; line-height: 1.7; }
+    .btn-primary { display: inline-block; background: var(--accent); color: var(--white); font-weight: 600; font-size: .95rem; padding: .8rem 1.8rem; border-radius: var(--radius); text-decoration: none; transition: background .2s, transform .15s; }
+    .btn-primary:hover { background: #2e6350; transform: translateY(-1px); }
+    .hero-note { margin-top: 1rem; font-size: .82rem; color: var(--muted); }
+    #context { background: var(--bg); }
+    #context .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-top: 1.75rem; }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; }
+    .card h3 { font-size: .95rem; margin-bottom: .4rem; }
+    .card p { font-size: .88rem; color: var(--muted); margin: 0; }
+    #promise { background: var(--white); }
+    .promise-block { background: var(--accent-bg); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 1.5rem 1.75rem 1.5rem 1.4rem; margin-top: 1.5rem; }
+    .promise-block p:last-child { margin-bottom: 0; }
+    #workflow { background: var(--bg); }
+    .steps { margin-top: 1.75rem; display: flex; flex-direction: column; gap: .75rem; }
+    .step { display: flex; gap: 1.1rem; align-items: flex-start; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+    .step-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--accent-bg); color: var(--accent); font-size: .8rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: .1rem; }
+    .step-body h3 { font-size: .95rem; margin-bottom: .2rem; }
+    .step-body p { font-size: .87rem; color: var(--muted); margin: 0; }
+    #proof { background: var(--white); }
+    .proof-inline { margin-top: 1.25rem; max-width: 580px; font-size: .97rem; color: var(--text); padding: 1.1rem 1.3rem; background: var(--accent-bg); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; }
+    .proof-inline p { margin-bottom: .4rem; }
+    .proof-inline p:last-child { margin: 0; font-size: .84rem; color: var(--muted); }
+    #audience { background: var(--bg); }
+    #audience .profiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.75rem; }
+    .profile { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; }
+    .profile h3 { font-size: .95rem; margin-bottom: .4rem; }
+    .profile p { font-size: .85rem; color: var(--muted); margin: 0; }
+    #cta { background: var(--white); border-top: 1px solid var(--border); }
+    #cta .container { max-width: 560px; }
+    #cta h2 { margin-bottom: .9rem; }
+    #cta .sub { color: var(--muted); margin-bottom: 2rem; }
+    .form-group { margin-bottom: 1rem; }
+    label { display: block; font-size: .75rem; font-weight: 600; color: var(--muted); margin-bottom: .35rem; text-transform: uppercase; letter-spacing: .06em; }
+    input, textarea, select { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: .65rem .9rem; color: var(--navy); font-size: .95rem; font-family: inherit; transition: border-color .2s; }
+    input::placeholder, textarea::placeholder { color: var(--muted); }
+    input:focus, textarea:focus, select:focus { outline: none; border-color: var(--accent); background: var(--white); }
+    select { appearance: none; cursor: pointer; }
+    textarea { resize: vertical; min-height: 90px; }
+    .btn-submit { width: 100%; background: var(--accent); color: var(--white); font-weight: 600; font-size: .95rem; padding: .85rem; border: none; border-radius: var(--radius); cursor: pointer; transition: background .2s; }
+    .btn-submit:hover { background: #2e6350; }
+    .form-note { margin-top: .9rem; font-size: .8rem; color: var(--muted); text-align: center; }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 2rem 0; text-align: center; font-size: .82rem; color: var(--muted); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+    @media (max-width: 600px) { section { padding: 3.5rem 0; } #hero { padding: 4rem 0 3rem; } }
+  </style>
+</head>
+<body>
+<nav><div class="container"><a href="#hero" class="nav-brand">José <span>Peixoto</span></a><a href="#cta" class="nav-cta">Prendre contact</a></div></nav>
+<section id="hero"><div class="container"><p class="eyebrow">Copywriter &mdash; système emailing clé en main</p><h1>Vos contacts, transformés<br>en canal de revenus.</h1><p class="sub">Vous avez constitué une base au fil du temps. Je mets en place l’ensemble du dispositif pour en faire un levier régulier — configuration technique, traitement de la base, rédaction, routage et suivi.</p><a href="#cta" class="btn-primary">Discutons de votre situation</a><p class="hero-note">Réponse sous 48 h &middot; Aucun engagement</p></div></section>
+<section id="context"><div class="container"><span class="label">Pourquoi ça bloque souvent</span><div class="divider"></div><h2>Avoir une base, c’est bien.<br>Savoir quoi en faire, c’est autre chose.</h2><p style="color:var(--muted);max-width:580px">Relancer une base de contacts demande un process structuré. Sans cela, même les contacts les plus qualifiés restent inexploités — ce n’est pas un problème de volonté, c’est un problème de méthode.</p><div class="cards"><div class="card"><h3>La délivrabilité, avant tout</h3><p>Sans configuration technique adaptée, un email correctement rédigé peut très bien ne jamais atteindre la boîte de réception.</p></div><div class="card"><h3>La base, à préparer</h3><p>Nettoyer et segmenter avant d’envoyer conditionne directement la qualité des résultats.</p></div><div class="card"><h3>Le message, clé de voûte</h3><p>La technique ouvre la porte. C’est le copywriting adapté à votre audience qui décide si le lecteur passe à l’action.</p></div></div></div></section>
+<section id="promise"><div class="container"><span class="label">L’approche</span><div class="divider"></div><h2>Un système complet,<br>un seul interlocuteur.</h2><div class="promise-block"><p>Le copywriting est au cœur de ce que je fais — c’est lui qui transforme un contact en client. Mais il ne fonctionne pas sans une infrastructure solide : délivrabilité, configuration technique, base de données préparée.</p><p style="margin-bottom:0">Je prends en charge l’ensemble, de la mise en place au suivi des résultats. Vous n’avez pas à coordonner plusieurs prestataires ni à faire l’intermédiaire entre la technique et la rédaction.</p></div></div></section>
+<section id="workflow"><div class="container"><span class="label">Comment ça se passe</span><div class="divider"></div><h2>De la configuration<br>aux résultats.</h2><div class="steps"><div class="step"><div class="step-num">1</div><div class="step-body"><h3>Configuration &amp; délivrabilité</h3><p>Mise en place du domaine d’envoi, configuration DNS (SPF, DKIM, DMARC), préchauffage de l’expéditeur.</p></div></div><div class="step"><div class="step-num">2</div><div class="step-body"><h3>Traitement de la base</h3><p>Nettoyage, déduplication, segmentation selon les profils.</p></div></div><div class="step"><div class="step-num">3</div><div class="step-body"><h3>Rédaction des séquences</h3><p>Copywriting adapté à votre secteur, votre offre et les segments définis.</p></div></div><div class="step"><div class="step-num">4</div><div class="step-body"><h3>Routage &amp; envoi</h3><p>Paramétrage des campagnes, programmation des envois.</p></div></div><div class="step"><div class="step-num">5</div><div class="step-body"><h3>Suivi &amp; optimisation</h3><p>Monitoring de la délivrabilité, analyse des résultats, ajustements.</p></div></div></div></div></section>
+<section id="proof"><div class="container"><span class="label">Résultat concret</span><div class="divider"></div><h2>Un exemple.</h2><div class="proof-inline"><p>Sur une base de <strong>20 000 contacts requalifiés</strong> dans le rachat de crédit, une séquence de 6 mois a généré <strong>50 000 € de CA</strong> — sans budget publicitaire, sans nouveaux contacts.</p><p>Base existante, nettoyée, segmentée et activée.</p></div></div></section>
+<section id="audience"><div class="container"><span class="label">À qui c’est destiné</span><div class="divider"></div><h2>Vous avez une base constituée.<br>Vous cherchez à mieux l’activer.</h2><p style="color:var(--muted);max-width:560px;margin-bottom:1.5rem">Cette prestation s’adresse aux dirigeants de TPE et PME qui ont des contacts accumulés et souhaitent en faire un canal de revenus régulier.</p><div class="profiles"><div class="profile"><h3>Courtiers en crédit</h3><p>Des dossiers traités, des prospects qui n’ont pas abouti. Un bon suivi email peut rouvrir ces conversations.</p></div><div class="profile"><h3>Courtiers en assurance</h3><p>Renouvellements, prospects non transformés — une base bien travaillée est un levier de fidélisation et de relance.</p></div><div class="profile"><h3>TPE &amp; PME</h3><p>Vous avez des contacts, pas forcément le process pour les relancer. C’est exactement là que j’interviens.</p></div></div></div></section>
+<section id="cta"><div class="container"><span class="label">Contact</span><div class="divider"></div><h2>Parlez-moi de votre base.</h2><p class="sub">Décrivez votre situation en quelques lignes. Je vous reviens sous 48 h avec un retour concret.</p><form action="mailto:contact@josepeixoto.fr" method="post" enctype="text/plain"><div class="form-group"><label for="name">Nom</label><input type="text" id="name" name="name" placeholder="Jean Dupont" required /></div><div class="form-group"><label for="email">Email professionnel</label><input type="email" id="email" name="email" placeholder="jean@entreprise.fr" required /></div><div class="form-group"><label for="sector">Secteur</label><select id="sector" name="sector"><option value="" disabled selected>Sélectionnez…</option><option>Courtage crédit</option><option>Courtage assurance</option><option>TPE / PME — autre secteur</option></select></div><div class="form-group"><label for="message">Votre base &amp; votre objectif</label><textarea id="message" name="message" placeholder="Taille de la base, secteur, ce que vous souhaitez mettre en place…"></textarea></div><button type="submit" class="btn-submit">Envoyer</button><p class="form-note">Aucun engagement &middot; Réponse sous 48 h</p></form></div></section>
+<footer><div class="container"><p>&copy; 2025 José Peixoto &middot; Système emailing clé en main</p><p style="margin-top:.4rem"><a href="mailto:contact@josepeixoto.fr">contact@josepeixoto.fr</a></p></div></footer>
+</body>
+</html>
